@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<windows.h>
+#include<assert.h>
+void replace(char *src)
+{
+	assert(src);
+	int oldlen = 0;                               //原字符串长度
+	int newlen = 0;                               //新字符串长度
+	int blacknum = 0;                             //空格数量
+	int newback = 0;                              //新字符串尾部
+	int oldback = 0;                              //原字符串尾部
+	while (src[oldlen] != '\0')
+	{
+		if (src[oldlen] == ' ')
+		{
+			blacknum++;
+		}
+		oldlen++;
+	}
+	newlen = oldlen + blacknum * 2;
+	oldback = oldlen - 1;
+	newback = newlen - 1;
+	while (oldback != 0){
+		if (src[oldback] == ' '){
+			src[newback--] = '0';
+			src[newback--] = '2';
+			src[newback] = '%';
+		}
+		else{
+			src[newback] = src[oldback];
+		}
+		oldback--;
+		newback--;
+	}
+}
+int main(){
+	char p[20] = "abc defgx yz";
+	replace(p);
+	printf("%s\n", p);
+	system("pause");
+	return 0;
+}
