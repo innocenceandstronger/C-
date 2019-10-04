@@ -1,0 +1,21 @@
+#include<stdio.h>
+int main()
+{
+	int a,b;
+	int c=0;
+	while(1)
+	{
+		printf("input two numbers:");
+		scanf("%d,%d",&a,&b);
+		while(a!=b)
+		{
+			if(a>b)
+				a=a-b;
+			else
+				b=b-a;
+			c++;
+		}
+		printf("the maximum common divisor is:%d\n",a);
+	}
+	return 0;
+}
