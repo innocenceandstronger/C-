@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	int letter = 0;
+	printf("请从键盘上输入一个字符 \n");
+	letter = getchar();
+	if (letter >= 'a'&&letter <= 'z')
+	{
+		putchar(letter - 32);
+	}
+	else if (letter >= 'A'&&letter <= 'Z')
+	{
+		putchar(letter + 32);
+	}
+	if (0 <= letter <= 9)
+	{
+		
+	}
+	printf("\n");
+	return 0;
+}
