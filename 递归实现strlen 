@@ -1,0 +1,18 @@
+#include<stdio.h>
+int D_StrL(char *str)
+{
+	if(*str=='\0')
+	{
+		return 0;
+	}
+	return 1+D_StrL(++str);
+}
+int main()
+{
+	char str[]={"abcdefghigk"};
+	int DS=0;
+	int FDS=0;
+	DS=D_StrL(str);
+	printf("递归结果: %d\n",DS);
+	return 0;
+}
