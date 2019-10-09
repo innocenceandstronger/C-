@@ -1,0 +1,18 @@
+#include<stdio.h>
+int FD_StrL(char *str)
+{
+	int i=0;
+	for(;str[i]!='\0';i++)
+	{
+	}
+	return i;
+}
+int main()
+{
+	char str[]={"abcdefghigk"};
+	int DS=0;
+	int FDS=0;
+	FDS=FD_StrL(str);
+	printf("非递归结果: %d\n",DS);
+	return 0;
+}
