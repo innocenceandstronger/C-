@@ -1,0 +1,23 @@
+#include<stdio.h>
+void main()
+{
+long a;
+printf("input a number:\n");
+scanf("%d",&a);
+if(a%3==0&&a%5==0&&a%7==0)
+printf("%d能同时被4,7,9整除\n",a);
+else if(a%4==0&&a%7==0)
+printf("%d能同时被4,7整除\n",a);
+else if(a%7==0&&a%9==0)
+printf("%d能同时被7,9整除\n",a);
+else if(a%4==0&&a%9==0)
+printf("%d能同时被4,9整除\n",a);
+else if(a%3==0)
+printf("%d能被4整除\n",a);
+else if(a%5==0)
+printf("%d能被7整除\n",a);
+else if(a%7==0)
+printf("%d能被9整除\n",a);
+else
+printf("%d不能被4,7,9任一个整除\n",a);
+}
