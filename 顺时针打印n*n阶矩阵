@@ -1,0 +1,28 @@
+#include <stdio.h>
+int a[100][100];
+int main(){
+	int i, j, k, n, b[2], x, y, t;
+	scanf("%d", &n);
+	b[0] = 0;
+	b[1] = 1;
+	k = n; 
+	t = 1;
+	x = 1;
+	while(x <= n*n){
+		for(y = 1; y <= 2*k-1; y++){
+			b[y/(k+1)] = b[y/(k+1)] + t;
+			a[b[1]][b[0]] = x;
+			x++;
+		}
+		k--;
+		t = -t;
+	}
+	for(i = 1; i <= n; i++){
+		for(j = 1; j <= n; j++){
+			printf("%3d", a[i][j]);
+		}
+		printf("\n");
+	} 
+	return 0;
+}
+
