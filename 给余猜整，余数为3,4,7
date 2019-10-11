@@ -1,0 +1,17 @@
+#include<stdio.h>
+int main()
+{
+	int a,b,c,d;
+	printf("please think of a number between 1 and 100\n");
+	printf("your number divided by 3 has a reminder of");
+	scanf("%d",&a);
+	printf("your number divided by 4 has a reminder of");
+	scanf("%d",&b);
+	printf("your number divided by 7 has a reminder of");
+	scanf("%d",&c);
+	printf("let me think a moment…");
+	d=28*a+21*b+36*c;
+	while(d>100)
+		d=d-84;
+	printf("your number was %d\n",d);
+}
