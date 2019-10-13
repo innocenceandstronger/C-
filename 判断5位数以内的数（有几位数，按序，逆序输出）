@@ -1,0 +1,49 @@
+#include<stdio.h>
+int fun(int num)
+{
+	int count = 1;
+	while (num > 9)
+	{
+		count++;
+		num /= 10;
+	}
+	return count;
+}
+int SeqPrint(int num)
+{
+	int i = 1;
+	int a[10] = { 0 };
+	int ret = fun(num);
+	while (num > 9)
+	{
+		a[i] = num % 10;
+		i++;
+		num /=10;
+	}
+	a[i] = num;
+	for (i = ret;i >0;i--)
+	{
+		printf("%d\t",a[i]);
+	}
+	return 0;
+}
+int main()
+{
+	int n = 0;
+	int m = 0;
+	scanf("%d", &n);
+	printf("%d是%d位数\n",n,fun(n));
+	printf("按序输出各位数字\n");
+	SeqPrint(n);
+	printf("\n");
+	printf("逆序输出各位数字\n");
+		while (n >= 9)
+		{
+			m = n % 10;
+			printf("%d\t",m);
+			n /=10;
+		}
+		printf("%d\n",n);
+		printf("\n");
+		return 0;
+}
