@@ -1,0 +1,30 @@
+#include<stdio.h>
+char stk[100];
+int sp=0;
+int main()
+{
+	char t,str[100];
+	int i=0,flag=1;
+	gets(str);
+	while((t=str[i])!=0)
+	{
+		if(t=='(')
+			stk[sp++]=t;
+		if(t==')')
+		{
+			if(sp!=0&&'('==stk[sp-1])
+				--sp;
+			else
+			{
+				flag=0;
+				break;
+			}
+		}
+		++i;
+	}
+	if(flag==0||sp!=0)
+		printf("括号不匹配\n");
+	else
+		printf("括号匹配\n");
+	return 0;
+}
