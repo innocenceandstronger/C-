@@ -1,0 +1,43 @@
+#include<stdio.h>
+void main()
+{
+	char b[21];
+	int n,i,j,k,u,r,t[20],c[20][20];
+	long f[20][20],min,d;
+	printf("请输入整数:");
+	scanf("%s",&b);
+	for(n=0,i=0;b[i]!='\0';i++)n++;
+	printf("请输入插入的加号个数r:");
+	scanf("%d",&r);
+	printf("在整数%s中插入%d个加号,使和最小:\n",b,r);
+	for(d=0,j=1;j<=n;j++)
+	{
+		d=d*10+b[j-1]-48;
+		f[j][0]=d;
+	}
+	for(k=1;k<=r;k++)
+		for(i=k+1;i<=n;i++)
+			for(j=k,min=10000;j<i;j++)
+			{
+				for(d=0,u=j+1;u<=i;u++)
+					d=d*10+b[u-1]-48;
+				if(min>f[j][k-1]+d)
+				{
+					min=f[j][k-1]+d;
+					c[i][k]=j;
+				}
+				f[i][k]=min;
+			}
+			t[r]=c[n][r];
+			for(k=r-1;k>=1;k--)
+				t[k]=c[t[k+1]][k];
+			t[0]=0;t[r+1]=n;
+			for(k=1;k<=r+1;k++)
+			{
+				for(u=t[k-1]+1;u<=t[k];u++)
+					printf("%c",b[u-1]);
+				if(k<r+1)
+					printf("+");
+			}
+			printf("=%ld\n",f[n][r]);
+}
