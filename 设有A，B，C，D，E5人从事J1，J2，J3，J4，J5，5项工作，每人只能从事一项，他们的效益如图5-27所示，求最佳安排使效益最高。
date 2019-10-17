@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<stdlib.h>
+int MansToJobs[6][6]={{0,0,0,0,0,0},
+	{0,10,11,10,4,7},
+    {0,13,10,10,8,5},
+    {0,5,9,7,7,4},
+    {0,15,12,10,11,5},
+    {0,10,11,8,8,4}};
+int TheBestResultOfDistribution[6]={0};
+int BossWantIt[6]={0};
+int BestRecord=0,NowadayRecord=0;
+int search(int n)
+{
+	int i,j;
+	for(i=1;i<=5;i++)
+	{
+		if(TheBestResultOfDistribution[i]==0)
+		{
+			TheBestResultOfDistribution[i]=n;
+			NowadayRecord+=MansToJobs[n][i]; 
+			if(n==5)
+			{
+				if(NowadayRecord>BestRecord)
+				{
+					BestRecord=NowadayRecord;
+					for(j=1;j<=5;j++)
+						BossWantIt[j]=TheBestResultOfDistribution[j];
+				}
+			}
+			else
+				search(n+1);
+			TheBestResultOfDistribution[i]=0; 
+			NowadayRecord-=MansToJobs[n][i];
+		}
+	}
+}
+int main()
+{
+	int i;
+	search(1);
+	for(i=1;i<=5;i++)
+		printf("The job:%d give the guy:%d\n",i,BossWantIt[i]);
+	printf("total:%d",BestRecord);
+	return 0;
+}
