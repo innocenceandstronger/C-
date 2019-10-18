@@ -1,0 +1,37 @@
+#include<stdio.h>
+void greedy(int s[],int f[],int a[],int k);
+int main()
+{
+	int s[]={1,3,0,5,3,5,6,8,8,2,12};
+	int f[]={4,5,6,7,8,9,10,11,12,13,14};
+	int k;
+	int a;
+	k=sizeof(f)/sizeof(f[0]);
+	a=(int*)malloc(sizeof(int)*k);
+	greedy(s,f,a,k);
+	system("PAUSE");
+}
+void greedy(int s[],int f[],int a[],int k)
+{
+	int i,j,count;
+	j=0;
+	for(i=0;i<k;i++)
+	{
+		a[i]=0;
+	}
+	a[0]=1;
+	printf("第1个活动被安排\n");
+	count=1;
+	for(i=1;i<k;i++)
+	{
+		if(s[i]>f[j])
+		{
+			a[i]=1;
+			printf("开始%d,结束%d.",s[i],f[i]);
+				j=i;
+			count++;
+			printf("第%d个活动被安排\n",i+1);
+		}
+	}
+	printf("总计%d个活动被安排\n",count);
+}
