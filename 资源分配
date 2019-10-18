@@ -1,0 +1,46 @@
+#include<stdio.h>
+int main()
+{
+	int i,j,k,m,n,rest,a[100][100],gain[100];
+	float q[100],f[100],temp[100];
+	printf("How many item?\n");
+	scanf("%d",&m);
+	printf("How many money?\n");
+	scanf("%d",&n);
+	printf("input one item gain table:\n");
+	for(j=0;j<=n;j=j+1)
+	{
+		scanf("%1f",&q[j]);
+		f[j]=q[j];
+	}
+	for(j=0;j<=n;j=j+1)
+		a[1][j]=j;
+	for(k=2;k<=m;k=k+1)
+	{
+		printf("input another item gain table: ");
+		for(j=0;j<=n;j=j+1)
+		{
+			temp[j]=q[j];
+			scanf("%1f",&q[j]);
+			a[k][j]=0;
+		}
+		for(j=0;j<=n;j=j+1)
+			for(i=0;i<=j;i=i+1)
+				if(f[j-i]+q[i]>temp[j])
+				{
+					temp[j]=f[j-i]+q[i];
+					a[k][j]=i;
+				}
+				for(i=0;j<=n;j=j+1)
+					f[j]=temp[j];
+	}
+	rest =n;
+	for(i=m;i>=1;i=i-1)
+	{
+		gain[i]=a[i][rest];
+		rest=rest-gain[i];
+	}
+	for(i=1;i<=m;i=i+1)
+		printf("%d",gain[i]);
+	printf("%d",f[n]);
+}
