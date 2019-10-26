@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<Windows.h>
+int count_one_bits(int x)
+{
+	int count = 0;
+	while (x)
+	{
+		x = x&(x - 1);
+		count++;
+	}
+	return count;
+}
+int main()
+{
+	int x = 15;
+	int ret = count_one_bits(x);
+	printf("%d\n",ret);
+	
+system("pause");
+	return 0;
+}
