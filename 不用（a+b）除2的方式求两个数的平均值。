@@ -1,0 +1,18 @@
+# define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<Windows.h>
+int average(int a,int b)
+{
+	int num = 0;
+	num = (b - a) / 2 + a;
+	return num;
+}
+int main()
+{
+	int a,b;
+	printf("请输入两个数:");
+	scanf("%d,%d", &a, &b);
+	printf("%d\n", average(a,b));
+	system("pause");
+	return 0;
+}
