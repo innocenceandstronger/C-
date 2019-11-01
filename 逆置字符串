@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<Windows.h>
+void reverse_str(char * left, char * right)
+{
+	char tmp = 0;
+
+	while (left <= right) {
+		tmp = *(left);
+		*(left) = *(right);
+		*(right) = tmp;
+		left++;
+		right--;
+	}
+}
+
+void reverse(char *arr, int len)
+{
+	char *start = arr;
+	char *end = arr;
+	reverse_str(arr, arr + len - 1);
+	while (*end != '\0') {
+		while (*end != ' ' && *end != '\0')
+			end++;
+		reverse_str(start, end - 1);
+		if (*end != '\0')
+			start = ++end;
+	}
+}
+
+int main()
+{
+	char arr[] = "student a am i";
+	int len = strlen(arr);
+
+	reverse(arr, len);
+	printf("%s\n", arr);
+
+	system("pause");
+	return 0;
+}
