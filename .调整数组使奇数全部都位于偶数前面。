@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+//把一组数分为左半部分和右半部分，把左半部分找到的偶数和右边找到的奇数位置对调，直至左边没有偶奇数，右边没有奇数
+ void MoveNum(int arr[],int sz)
+{
+	int *left = arr;
+	int *right = arr+sz - 1;
+	while (left < right)
+	{
+		while ((left<right) && (*left) % 2 != 0)//注意，这里不止判断一次，所以要用while循环
+		{
+			left++;
+		}
+		while((left<right) && (*right) % 2 == 0)//注意，这里不止判断一次，所以要用while循环
+		{
+			right--;
+		}
+		if (left < right)//交换位置
+		{
+			int tmp = *left;
+		    *left= *right;
+		    *right = tmp;
+		}
+	}
+ 
+}
+ 
+int main()
+{
+	int arr[10 ]={ 2, 4, 6, 7, 8, 1, 3, 5, 9, 0 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	MoveNum(arr, sz);
+	int i = 0;
+	for (i = 0; i < sz; i++)//打印移动后的数组
+	{
+		printf("%d\n", arr[i]);
+	}
+	system("pause");
+	return 0;
+}
