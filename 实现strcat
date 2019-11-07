@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<assert.h>
+#include<Windows.h>
+char* mystrcat(char *dept, const char *src)
+{
+	char *ret = dept;
+	assert(dept != NULL);
+	assert(src != NULL);
+	while (*dept)
+	{
+		dept++;
+	}
+	while (*dept++ = *src++)
+	{
+		;
+	}
+	return ret;
+}
+int main()
+{
+	char arr1[20] = "hello";
+	char arr2[20] = "world";
+	char *ret = mystrcat(arr1, arr2);
+	printf("%s\n", ret);
+	system("pause");
+	return 0;
+}
