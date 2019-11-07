@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<assert.h>
+#include<Windows.h>
+char *strstr(const char *str, char *string)
+{
+	int i = 0;
+	assert(str&&string);
+	while ('\0' != str)
+	{
+		while (1)
+		{
+			if (string[i] != str[i])
+				break;
+			if (string[i] == '\0')
+				return str;
+			i++;
+		}
+		string++;
+	}
+	return NULL;
+}
+int main()
+{
+	char string[] = "lazy";
+	char str[] = "the quick brown dog jumps over the lazy fox";
+	char *p = strstr(str, string);
+	int result = p - str + 1;
+	if (p != NULL)
+		printf("%s found at position %d\n\n", string, result);
+	else
+		printf("%s not found\n", string);
+	system("pause");
+	return 0;
+}
