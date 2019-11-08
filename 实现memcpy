@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<string.h>
+#include<Windows.h>
+void *my_memcpy(void *dest, const void* src, int count)
+{
+	void * ret = dest;
+	while (count--)
+	{
+		*(char *)dest = *(char *)src;
+		dest = (char *)dest + 1;
+		src = (char *)src + 1;
+	}
+	return ret;
+
+}
+int main()
+{
+	char arr1[10] = { 0 };
+	char arr2[20] = "abcdef";
+
+	printf("%s", my_memcpy(arr2, arr1,6));
+
+	system("pause");
+}
